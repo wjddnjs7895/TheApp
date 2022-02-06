@@ -1,6 +1,7 @@
-import React from 'react';
-import {StyleSheet, View, Image, Text, Dimensions, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View, Image, Text, Dimensions, TouchableOpacity, Modal} from 'react-native';
 import colors from '../../assets/colors/colors';
+
 
 function ListBox(props) {
     const tailRadius = props.id === 34 ? 10 : 0;
@@ -17,6 +18,7 @@ function ListBox(props) {
 }
 
 const CalendarScreen = () => {
+    const [modalVisible, setModalVisible] = useState(false);
     const day = ["","월", "화", "수", "목", "금"];
     const period = [
         "1교시",
@@ -86,6 +88,23 @@ const CalendarScreen = () => {
         ));
     }
 
+    const ShowInfo = () => {
+        return (
+            <Modal 
+                visible = {modalVisible}
+                animationType='slide'
+                transparent = {true}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View
+                    style = {styles.modalStyle}
+                >
+
+                </View>
+            </Modal>
+        );
+    }
+
         
     return(
         <View style = {{
@@ -148,6 +167,7 @@ const CalendarScreen = () => {
             <View style = {{alignItems : 'center', marginTop : 30, marginBottom : 15,}}>
                     <TouchableOpacity
                         style = {styles.selectStyle}
+                        onPress = {() => setModalVisible(!modalVisible)}
                     >
                         <Image 
                                 source = {require('../../assets/images/Logo_List_Crimson.png')}
@@ -169,6 +189,7 @@ const CalendarScreen = () => {
                 height : 100,
             }}>
             </View>
+            <ShowInfo />
         </View>
     );
 }
@@ -233,6 +254,14 @@ const styles = StyleSheet.create({
         height : Dimensions.get('window').width * 0.07,
         borderRadius : 100,
     },
+    modalStyle : {
+        marginTop : 20,
+        justifyContent : 'center',
+        alignItems : 'center',
+        width : Dimensions.get('window').width,
+        height : Dimensions.get('window').height * 0.7,
+        backgroundColor : colors.white,
+    }
 })
 
 export default CalendarScreen;
