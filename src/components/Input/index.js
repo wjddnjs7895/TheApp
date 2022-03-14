@@ -3,7 +3,6 @@ import {View, StyleSheet, TextInput, Dimensions, Image} from 'react-native';
 import colors from '../../../assets/colors/colors';
 
 export default Input = (props) => {
-    const [info, setInfo] = useState('');
     return (
         <View style = {styles.containerStyle}>
             <Image 
@@ -14,10 +13,9 @@ export default Input = (props) => {
                 style = {styles.inputStyle}
                 placeholder = {props.text}
                 secureTextEntry = {props.secureTextEntry}
-                onChangeText = {(text)=> {
-                        setInfo(text)
-                    }
-                }
+                onChangeText = {(text) => {
+                    props.func(text);
+                }}
             />
         </View>
     )
