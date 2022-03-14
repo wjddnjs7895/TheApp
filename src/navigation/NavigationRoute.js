@@ -43,25 +43,25 @@ export function pushMainRoute() {
                     },
                     {
                         stack : {
-                            id : "CALENDAR_STACK",
+                            id : "SCHEDULE_STACK",
                             children : [{
                                 component : {
-                                    id : "CALENDAR",
-                                    name : "CalendarScreen",
+                                    id : "SCHEDULE",
+                                    name : "ScheduleScreen",
                                 }
                             }],
                             options : {
                                 topBar : {
                                     leftButtons : [
                                         {
-                                            icon : require("../../assets/images/Logo_Calendar_Crimson.png"),
+                                            icon : require("../../assets/images/Logo_Schedule_Crimson.png"),
                                         }
                                     ],
                                     title : {text : "시간표", color : colors.crimson, fontFamily : 'KOTRA_HOPE_TTF', fontSize : 25,},
                                 },
                                 bottomTab : {
-                                    icon : require("../../assets/images/Logo_Calendar_Gray.png"),
-                                    selectedIcon : require("../../assets/images/Logo_Calendar_Crimson.png"),
+                                    icon : require("../../assets/images/Logo_Schedule_Gray.png"),
+                                    selectedIcon : require("../../assets/images/Logo_Schedule_Crimson.png"),
                                 }
                             }
                         }
